@@ -7,7 +7,7 @@ public class Note extends AbstractNote{
 
     @Override
     public String toString() {
-        return String.format("model.Note{id: %d, header: %s, text: %s}", id, header, text);
+        return String.format("id: %d, header: %s, text: %s", id, header, text);
     }
 
 }

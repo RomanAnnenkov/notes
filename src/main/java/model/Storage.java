@@ -1,0 +1,11 @@
+package model;
+
+import java.util.List;
+
+public interface Storage {
+    List<AbstractNote> getAllNotes();
+    void createNote(AbstractNote note);
+    AbstractNote updateNote(AbstractNote note);
+    AbstractNote removeNote(AbstractNote note);
+
+}
