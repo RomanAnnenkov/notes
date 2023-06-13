@@ -11,6 +11,11 @@ public class StorageFile implements Storage {
     }
 
     @Override
+    public AbstractNote getNote(int id) {
+        return null;
+    }
+
+    @Override
     public void createNote(AbstractNote note) {
 
     }
