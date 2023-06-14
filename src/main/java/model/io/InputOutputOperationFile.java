@@ -39,6 +39,7 @@ public class InputOutputOperationFile implements InputOutputOperation {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             for (String line: lines) {
                 writer.write(line);
+                writer.append('\n');
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());

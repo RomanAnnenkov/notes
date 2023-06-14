@@ -23,6 +23,6 @@ public class ConverterNote implements Converter {
     @Override
     public Note convert(String str) {
         String[] elements = str.split(spliterator);
-        return new Note(Integer.getInteger(elements[0]), elements[1], elements[2]);
+        return new Note(Integer.parseInt(elements[0]), elements[1], elements[2]);
     }
 }
