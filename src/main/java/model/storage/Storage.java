@@ -10,5 +10,5 @@ public interface Storage {
     void createNote(AbstractNote note);
     AbstractNote updateNote(AbstractNote note);
     AbstractNote removeNote(AbstractNote note);
-
+    int getLastId();
 }

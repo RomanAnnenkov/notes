@@ -51,7 +51,7 @@ public class ViewNote {
     }
 
     private void createNote() {
-        int id = noteController.readAllNotes().size() + 1;//TODO add normal generate id
+        int id = noteController.getLastId() + 1;
         System.out.print("Заголовок: ");
         String header = scanner.nextLine();
         System.out.print("Текст: ");

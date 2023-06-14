@@ -30,4 +30,8 @@ public class NoteController {
     public AbstractNote deleteNote(AbstractNote note) {
         return storage.removeNote(note);
     }
+
+    public int getLastId() {
+        return storage.getLastId();
+    }
 }

@@ -76,4 +76,20 @@ public class StorageFile implements Storage {
         inputOutputOperation.write(getLines(listNotes));
         return removedNote;
     }
+
+    @Override
+    public int getLastId() {
+        List<AbstractNote> listNotes = getAllNotes();
+        if (listNotes.size() == 0) {
+            return 0;
+        }
+        int lastId = 0;
+        for (AbstractNote note: listNotes) {
+            int currentId = note.getId();
+            if (currentId > lastId) {
+                lastId = currentId;
+            }
+        }
+        return lastId;
+    }
 }
