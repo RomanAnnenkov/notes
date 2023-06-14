@@ -58,8 +58,7 @@ public class StorageFile implements Storage {
     public AbstractNote updateNote(AbstractNote note) {
         List<AbstractNote> listNotes = getAllNotes();
         for (AbstractNote currentNote : listNotes) {
-            if (currentNote.equals(note)) {
-                currentNote.setId(note.getId());
+            if (currentNote.getId() == note.getId()) {
                 currentNote.setHeader(note.getHeader());
                 currentNote.setText(note.getText());
             }

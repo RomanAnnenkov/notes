@@ -1,6 +1,7 @@
 package views;
 
 import controllers.NoteController;
+import model.AbstractNote;
 import model.Note;
 
 import java.util.Scanner;
@@ -30,10 +31,10 @@ public class ViewNote {
             }
             switch (userCommand) {
                 case "create":
-                    createNote();
+                    addNote();
                     break;
                 case "read":
-                    readNote();
+                    showNote();
                     break;
                 case "all":
                     showAllNotes();
@@ -50,24 +51,39 @@ public class ViewNote {
         }
     }
 
-    private void createNote() {
+    private void addNote() {
+        noteController.saveNote(createNote());
+    }
+
+    private AbstractNote createNote() {
         int id = noteController.getLastId() + 1;
         System.out.print("Заголовок: ");
         String header = scanner.nextLine();
         System.out.print("Текст: ");
         String text = scanner.nextLine();
-        noteController.saveNote(new Note(id, header, text));
+        return new Note(id, header, text);
     }
 
-    private void readNote() {
+    private AbstractNote readNote() throws Exception {
+        return noteController.readNote(getId());
+    }
+
+    private int getId() throws Exception {
         System.out.print("Введите id: ");
-        String inputId = scanner.nextLine();
         try {
-            int id = Integer.parseInt(inputId);
-            System.out.println(noteController.readNote(id));
-        } catch (Exception e) {
-            System.out.println("запись не найдена");
+            return Integer.parseInt(scanner.nextLine());
+        } catch (Exception ignored) {
         }
+        throw new Exception("Введённый id не число");
+    }
+
+    private void showNote() {
+        try {
+            System.out.println(readNote());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     private void showAllNotes() {
@@ -77,10 +93,28 @@ public class ViewNote {
     }
 
     private void updateNote() {
-        System.out.println("update note");
+        try {
+            AbstractNote note = readNote();
+            AbstractNote newNote = createNote();
+            newNote.setId(note.getId());
+            AbstractNote updatedNote = noteController.updateNote(newNote);
+            System.out.println("---updated---");
+            System.out.println(updatedNote);
+            System.out.println("---updated---");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void removeNote() {
-        System.out.println("remove note");
+        try {
+            AbstractNote note = readNote();
+            AbstractNote deletedNote = noteController.deleteNote(note);
+            System.out.println("---deleted---");
+            System.out.println(deletedNote);
+            System.out.println("---deleted---");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
