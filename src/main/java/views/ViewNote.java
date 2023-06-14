@@ -60,11 +60,20 @@ public class ViewNote {
     }
 
     private void readNote() {
-        System.out.println("read note");
+        System.out.print("Введите id: ");
+        String inputId = scanner.nextLine();
+        try {
+            int id = Integer.parseInt(inputId);
+            System.out.println(noteController.readNote(id));
+        } catch (Exception e) {
+            System.out.println("запись не найдена");
+        }
     }
 
     private void showAllNotes() {
-        System.out.println("read all notes");
+        for (var note : noteController.readAllNotes()) {
+            System.out.println(note);
+        }
     }
 
     private void updateNote() {

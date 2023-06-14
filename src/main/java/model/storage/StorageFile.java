@@ -29,14 +29,14 @@ public class StorageFile implements Storage {
     }
 
     @Override
-    public AbstractNote getNote(int id) {
+    public AbstractNote getNote(int id) throws Exception {
         List<AbstractNote> listNotes = getAllNotes();
         for (AbstractNote currentNote : listNotes) {
             if (currentNote.getId() == id) {
                 return currentNote;
             }
         }
-        return null;
+        throw new Exception("запись не найдена");
     }
 
     @Override

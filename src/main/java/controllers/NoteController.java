@@ -15,7 +15,7 @@ public class NoteController {
         storage.createNote(note);
     }
 
-    public AbstractNote readNote(int id) {
+    public AbstractNote readNote(int id) throws Exception {
         return storage.getNote(id);
     }
 
