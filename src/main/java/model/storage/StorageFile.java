@@ -29,11 +29,11 @@ public class StorageFile implements Storage {
     }
 
     @Override
-    public AbstractNote getNote(AbstractNote note) {
+    public AbstractNote getNote(int id) {
         List<AbstractNote> listNotes = getAllNotes();
         for (AbstractNote currentNote : listNotes) {
-            if (currentNote.equals(note)) {
-                return note;
+            if (currentNote.getId() == id) {
+                return currentNote;
             }
         }
         return null;
