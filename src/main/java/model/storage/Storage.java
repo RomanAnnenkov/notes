@@ -1,4 +1,6 @@
-package model;
+package model.storage;
+
+import model.AbstractNote;
 
 import java.util.List;
 
